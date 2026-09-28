@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: telecom-bridge-gateway
+
+diameter:
+  host: ${DIAMETER_HOST:localhost}
+  port: ${DIAMETER_PORT:3868}
+  origin-host: gateway.telecom-bridge.local
+  origin-realm: telecom-bridge.local
+  destination-realm: ocs.telecom-bridge.local
+  service-context-id: gy@telecom-bridge.local
+  connect-timeout-ms: 3000
+  request-timeout-ms: 2000
+  watchdog-seconds: 30
+  reconnect-delay-ms: 2000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.telecom: INFO
